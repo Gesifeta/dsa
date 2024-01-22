@@ -1,7 +1,7 @@
 const { SinglyLinkedNode,
-        SinglyLinkedList,
-        DoublyLinkedNode,
-        DoublyLinkedList } = require('../linked-list-queue-practice.js');
+  SinglyLinkedList,
+  DoublyLinkedNode,
+  DoublyLinkedList } = require('../practice/linked-list-queue-practice.js');
 const { expect } = require('chai');
 
 const chai = require('chai');
@@ -22,7 +22,8 @@ describe('Part 2: Linked Lists', () => {
     list.addToTail(3);
     list.addToTail(4);
 
-    expect(list.listLength()).to.equal(4);
+    expect(list.listLength(1)).to.equal(4);
+    expect(list.listLength(2)).to.equal(4);
   });
 
 
@@ -85,9 +86,8 @@ describe('Part 2: Linked Lists', () => {
     list.addToTail(6);
 
     const reversed = list.reverse();
-
-    let cur = reversed.head;
-    for (let i = 6 ; i >= 1 ; i--) {
+    let cur = reversed;
+    for (let i = 6; i >= 1; i--) {
       expect(cur.value).to.equal(i);
       cur = cur.next;
     }
@@ -107,7 +107,7 @@ describe('Part 2: Linked Lists', () => {
     list.reverseInPlace();
 
     let cur = list.head;
-    for (let i = 6 ; i >= 1 ; i--) {
+    for (let i = 6; i >= 1; i--) {
       expect(cur.value).to.equal(i);
       cur = cur.next;
     }
@@ -150,13 +150,14 @@ describe('Part 3: Doubly Linked Lists', () => {
     dll.addToTail(4);
     dll.addToTail(5);
     dll.addToTail(6);
-
+    (dll.reverse());
     const reversed = dll.reverse();
-
     let cur = reversed.head;
-    for (let i = 6 ; i >= 1 ; i--) {
-      expect(cur.value).to.equal(i);
+
+    for (let i = 6; i >= 1; i--) {
+      if (!cur) return null;
       cur = cur.next;
+      expect(cur.value).to.equal(i);
     }
 
     expect(cur).to.equal(null);
@@ -174,7 +175,7 @@ describe('Part 3: Doubly Linked Lists', () => {
     dll.reverseInPlace();
 
     let cur = dll.head;
-    for (let i = 6 ; i >= 1 ; i--) {
+    for (let i = 6; i >= 1; i--) {
       expect(cur.value).to.equal(i);
       cur = cur.next;
     }

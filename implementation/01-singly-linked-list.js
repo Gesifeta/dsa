@@ -12,8 +12,16 @@ class SinglyLinkedList {
         this.length = 0;
     }
 
-    addToHead(val) { 
+    addToHead(val) {
         // Add node of val to head of linked list
+        let node = new SinglyLinkedNode(val);
+        if (this.head === null) this.head = node;
+        node.next = this.head
+        this.head = node;
+        console.log(this.head)
+        return this.head;
+
+
 
         // Write your hypothesis on the time complexity of this method here
     }
@@ -59,7 +67,7 @@ class SinglyLinkedList {
 
     print() {
         // Print out the linked list
-        
+
         // Write your hypothesis on the time complexity of this method here
     }
 }
